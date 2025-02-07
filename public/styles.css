@@ -317,7 +317,7 @@ button {
 .info{
       width: calc(100% * (2/3)); /* Занимает две трети ширины */
       text-align: left;
-      font-size: 10px;
+      font-size: 10%;
       padding: 0;
       margin: 0;
       margin-left: 5%;
@@ -400,13 +400,46 @@ button {
 .textinfo{
       position: relative;
       bottom: 2em;
+      padding: 1%;
 }
 
-.image-grid{
+.section-wrapper {
       display: flex;
-      gap: 1%;
-}
+      justify-content: center; /* Центрируем содержимое */
+      width: 100%; /* Даем wrapper всю ширину */
+      margin: 0 auto;
+  }
+  
+  section {
+      display: flex; /* Используем flexbox для естественного переноса */
+      flex-wrap: wrap; /* Позволяем элементам переноситься вниз */
+      width: 94%; /* Чуть меньше 100%, чтобы создать эффект наложения */
+      margin: 0 auto;
+      padding: 0;
+      text-align: center;
+      margin: 0 auto;
+  }
+  
+  .daylocked {
+      width: calc(100% / 8.05); /* Разбиваем на 8 колонок, но чуть меньше, чтобы было наложение */
+      height: auto; /* Сохраняем пропорции */
+      display: block;
+      margin: -2px; /* Чуть-чуть наезжаем друг на друга */
+  }
 
-.daylocked{
-      width: 10%;
+
+
+  
+.butback{
+      background-color: #161617;
+      box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.5);
+      color: whitesmoke;
+      border-radius: 20%;
+      font-size: 60%;
+      width: 30%;
+      padding: 1%;
+      position: absolute;
+      top: 90%;
+      left: 48%;
+      transform: translate(-50%, -50%);
 }
