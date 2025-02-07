@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy Boost</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+    <header>
+        <h2>💰 Buy Boost</h2>
+    </header>
+
+    <section class="boosts">
+        <button onclick="buyBoost('small')">🔹 Малый (50⭐)</button>
+        <button onclick="buyBoost('medium')">🔸 Средний (350⭐)</button>
+        <button onclick="buyBoost('large')">💎 Большой (3500⭐)</button>
+    </section>
+
+    <button onclick="goBack()">🔙 Назад</button>
+
+    <script src="/script.js"></script>
+    <script>
+        function goBack() {
+            window.location.href = "/";
+        }
+    </script>
+</body>
+</html>
