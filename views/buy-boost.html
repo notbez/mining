@@ -3,22 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buy Boost</title>
+    <title>BuyBoost</title>
     <link rel="stylesheet" href="/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
     <header>
-        <h2>💰 Buy Boost</h2>
+        <div class="conteiner-day">
+            <img src="/icons/5.png" alt="DailyClaim" class="manicon">
+                <div class="textuinfo">
+                    <h2>This is a daily reward stamp.</h2>
+                    <p class="doppoinfo">Visit Miner every day and collect your daily prize.</p>
+                </div>
+        </div>
     </header>
+    <div class="maincontent">
+        <button class="boostbut"><img src="/icons/coaltrolley.png" alt="coaltr" class="boosts"></button>
+        <button class="boostbut"><img src="/icons/coalmine.png" alt="coaltr" class="boosts"></button>
+        <button class="boostbut"><img src="/icons/processingplant.png" alt="coaltr" class="boosts"></button>
+    </div>
+    
+    <div class="huynya">
+        Each boost brings a different profit, be sure to think about each step before buying, since it is impossible to return the funds after buying the boost.
+    </div>
 
-    <section class="boosts">
-        <button onclick="buyBoost('small')">🔹 Малый (50⭐)</button>
-        <button onclick="buyBoost('medium')">🔸 Средний (350⭐)</button>
-        <button onclick="buyBoost('large')">💎 Большой (3500⭐)</button>
-    </section>
-
-    <button onclick="goBack()">🔙 Назад</button>
+    <div class="koko">
+        <button onclick="goBack()" class="butback">Back</button>
+    </div>
 
     <script src="/script.js"></script>
     <script>

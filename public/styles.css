@@ -317,7 +317,7 @@ button {
 .info{
       width: calc(100% * (2/3)); /* Занимает две трети ширины */
       text-align: left;
-      font-size: 10%;
+      font-size: 55%;
       padding: 0;
       margin: 0;
       margin-left: 5%;
@@ -329,7 +329,7 @@ button {
 .wallet{
 
       background-color: #161617;
-      font-size: 10px;
+      font-size: 100%;
       padding: 0;
       margin: 0;
       color: whitesmoke;
@@ -443,3 +443,173 @@ button {
       left: 48%;
       transform: translate(-50%, -50%);
 }
+
+/*----buyboost----------------------------------------------------------------------------------*/
+
+.doppoinfo{
+      font-size: 65%;
+      margin: 0 auto;
+      width: 60%;
+      text-align: center;
+      line-height: 130%;
+      margin-top: 2%;
+      color: #515151;
+      font-weight: 300;
+}
+
+.textuinfo{
+      position: relative;
+      bottom: -1em;
+      padding: 1%;
+}
+
+.manicon{
+      margin: 0;
+      padding: 0;
+      width: 30%;
+}
+
+.boostbut{
+      background-color: #161617;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+}
+
+.boosts{
+      margin: 0;
+      padding: 0;
+      width: 100%;
+}
+
+.huynya{
+      color: #939393;
+      font-size: 10%;
+      width: 80%;
+      text-align: center;
+      margin: 0 auto;
+}
+
+/*----friends----------------------------------------------------------------------------------*/
+
+.friendshead{
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      gap: 10%;
+}
+
+.frava{
+      width: 30%;
+}
+
+.fravaimg{
+      width: 100%;
+}
+
+.textanahuy{
+      width: 70%;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5em; /* Задает расстояние между .zagolovok и .poyasneniye */
+}
+
+.zagolovok{
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      font-size: 75%;
+      color: whitesmoke;
+      font-weight: 500;
+}
+
+.poyasneniye{
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      font-size: 49.5%;
+      color: #585858;
+}
+
+
+.entcode {
+      width: 90%;
+      box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.5);
+      border-radius: 0.5em;
+      padding: 3%;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column; /* Располагаем элементы вертикально */
+      gap: 1em; /* Добавляем расстояние между текстом и полем ввода */
+  }
+  
+  .entera {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5em; /* Расстояние между заголовком и пояснением */
+  }
+  
+  .input-container {
+      display: flex;
+      align-items: center; /* Выравниваем элементы по центру по вертикали */
+      justify-content: space-between; /* Размещаем инпут слева, кнопку справа */
+      width: 100%; /* Растягиваем контейнер на всю ширину */
+  }
+  
+  .vvodilka, .done {
+      height: 2em; /* Делаем одинаковую высоту */
+  }
+  
+  .vvodilka {
+      background-color: #161617;
+      width: 35%;
+      border-radius: 0.8em;
+      border: none;
+      outline: none;
+      box-shadow: 0px 0px 3px 2px rgba(0, 0, 0, 0.5);
+      color: whitesmoke;
+      padding-left: 10px;
+      font-size: 40%;
+  }
+  
+  .vvodilka::placeholder {
+      color: #555;
+      opacity: 1;
+  }
+  
+  .vvodilka:focus::placeholder {
+      opacity: 0;
+  }
+  
+  .vvodilka:focus {
+      outline: none;
+      border: none;
+      box-shadow: 0px 0px 3px 2px rgba(0, 0, 0, 0.5);
+      caret-color: whitesmoke;
+  }
+  
+  .done {
+      background-color: #161617;
+      width: 20%;
+      font-size: 40%;
+      box-shadow: 0px 0px 3px 2px rgba(0, 0, 0, 0.5);
+      color: whitesmoke;
+      border-radius: 0.8em;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 1em;
+      font-weight: 300;
+  }
+
+  #chvet{
+      line-height: 1.2em;
+  }
+
+
+  
