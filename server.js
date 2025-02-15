@@ -11,12 +11,23 @@ app.use(express.json());
 app.use(cors());
 app.use(express.static('public'));
 
-// Подключение к MongoDB
-mongoose.connect(process.env.MONGO_URI, {
+// 📌 Подключение к MongoDB
+mongoose.connect('mongodb://localhost:27017/miningApp', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(() => console.log('✅ MongoDB connected'))
-  .catch(err => console.log('❌ DB Error:', err));
+  .catch(err => console.error('❌ Ошибка подключения к базе:', err));
+
+// 📌 Логирование всех запросов
+app.use((req, res, next) => {
+    console.log(`➡ Запрос: ${req.method} ${req.url}`);
+    next();
+});
+
+// 📌 Подключаем API для пользователей
+app.use('/user', require('./routes/user'));
+
+// 📌 Проверяем, работает ли сервер
 
 // 📌 Подключаем API-роуты
 app.use('/claim', require('./routes/claim'));

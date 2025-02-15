@@ -1,71 +1,111 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Друзья</title>
-      <link rel="stylesheet" href="/public/styles.css">
-       <link rel="preconnect" href="https://fonts.googleapis.com">
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-
-      <script src="https://telegram.org/js/telegram-web-app.js"></script>
-</head>
-<body>
-      <header class="headOfFriends">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Друзья</title>
+        <link rel="stylesheet" href="/styles.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+        <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    </head>
+    <body>
+        <header class="headOfFriends">
             <div class="friendshead">
-                  <div class="frava">
-                        <img src="/public/icons/frava.png" alt="avatar" class="fravaimg">
-                  </div>
-                  <div class="textanahuy">
-                        <div class="zagolovok">
-                              Invite a friend
-                        </div>
-                        <div class="poyasneniye">
-                              Invite active friends and receive a portion of their income from the first day
-                        </div>
-                  </div>
+                <div class="frava">
+                    <img src="/icons/frava.png" alt="avatar" class="fravaimg" />
+                </div>
+                <div class="textanahuy">
+                    <div class="zagolovok">Invite a friend</div>
+                    <div class="poyasneniye">
+                        Invite active friends and receive a portion of their
+                        income from the first day
+                    </div>
+                </div>
             </div>
-      </header>
+        </header>
 
-      <section>
+        <section class="lolpopaku">
             <div class="entcode">
-                  <div class="entera">
-                      <div class="zagolovok" id="razmer">Enter the code</div>
-                      <div class="poyasneniye" id="chvet">
-                          The code gives you the opportunity to receive a small initial bonus in order to start actively mining our token.
-                      </div>
-                  </div>
-              
-                  <div class="input-container">
-                      <input type="text" class="vvodilka" placeholder="Enter Code...">
-                      <button class="done">Done</button>
-                  </div>
-              </div>
-
-            <div class="polhuy">
-                  Please note that the invitation code can be entered only 1 time and no more.
+                <div class="entera">
+                    <div class="zagolovok" id="razmer">Enter the code</div>
+                    <div class="poyasneniye" id="chvet">
+                        The code gives you the opportunity to receive a small
+                        initial bonus in order to start actively mining our
+                        token.
+                    </div>
+                </div>
+        
+                <div class="input-container">
+                    <input type="text" class="vvodilka" placeholder="Enter Code..." />
+                    <button class="done">Done</button>
+                </div>
             </div>
-
+        
+            <div class="polhuy">
+                Please note that the invitation code can be entered only 1 time
+                and no more.
+            </div>
+        
             <div class="refer">
-
+                <div class="entera">
+                    <div class="zagolovok" id="razmer">Request a code</div>
+                    <div class="poyasneniye" id="chvet">
+                        Thanks to your invitation code, your friends will be
+                        able to start mining the token faster, and you will be
+                        able to receive a small percentage of their profits.
+                    </div>
+                </div>
+        
+                <div class="input-container">
+                    <button class="done" id="fuck">Request code</button>
+                </div>
             </div>
-
+        
             <div class="polhuy">
-
+                The code is issued in accordance with the indicators of the
+                channel, namely the activity of the community of the influencer.
             </div>
-      </section>
+        </section>
 
+        <hr class="header-line2" />
 
-      <hr class="header-line2">
+        <nav class="bottom-nav">
+            <button
+                data-page="profile"
+                data-active="6.png"
+                data-inactive="1.png"
+                onclick="navigate('/')"
+            >
+                <img src="/icons/1.png" alt="Профиль" class="buttons" />
+            </button>
+            <button
+                data-page="rating"
+                data-active="7.png"
+                data-inactive="2.png"
+                onclick="navigate('/rating')"
+            >
+                <img src="/icons/2.png" alt="Рейтинг" class="buttons" />
+            </button>
+            <button
+                data-page="mining"
+                data-active="8.png"
+                data-inactive="3.png"
+                onclick="navigate('/mining')"
+            >
+                <img src="/icons/3.png" alt="Майнинг" class="buttons" />
+            </button>
+            <button
+                data-page="friends"
+                data-active="9.png"
+                data-inactive="4.png"
+                onclick="navigate('/friends')"
+            >
+                <img src="/icons/4.png" alt="Друзья" class="buttons" />
+            </button>
+        </nav>
 
-      <nav class="bottom-nav">
-        <button onclick="navigate('/')"> <img src="/public/icons/1.png" alt="" class="buttons"> </button>
-        <button onclick="navigate('/rating')"><img src="/public/icons/4.png" alt="" class="buttons"></button>
-        <button onclick="navigate('/mining')"><img src="/public/icons/2.png" alt="" class="buttons"></button>
-        <button onclick="navigate('/friends')"><img src="/public/icons/3.png" alt="" class="buttons"></button>
-    </nav>
-
-      <script src="/script.js"></script>
-</body>
+        <script src="/script.js"></script>
+    </body>
 </html>

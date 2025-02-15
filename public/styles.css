@@ -76,14 +76,10 @@ video {
     background: transparent;
 }
 
-
-
-
-
-
 body {
     line-height: 1;
 }
+
 article,
 aside,
 details,
@@ -97,19 +93,23 @@ nav,
 section {
     display: block;
 }
+
 nav ul {
     list-style: none;
 }
+
 blockquote,
 q {
     quotes: none;
 }
+
 blockquote:before,
 blockquote:after,
 q:before,
 q:after {
     content: none;
 }
+
 a {
     margin: 0;
     padding: 0;
@@ -118,29 +118,35 @@ a {
     background: transparent;
     text-decoration: none;
 }
+
 ins {
     background-color: #ff9;
     color: #000;
     text-decoration: none;
 }
+
 mark {
     background-color: #ff9;
     color: #000;
     font-style: italic;
     font-weight: bold;
 }
+
 del {
     text-decoration: line-through;
 }
+
 abbr[title],
 dfn[title] {
     border-bottom: 1px dotted;
     cursor: help;
 }
+
 table {
     border-collapse: collapse;
     border-spacing: 0;
 }
+
 hr {
     display: block;
     height: 1px;
@@ -149,19 +155,19 @@ hr {
     margin: 1em 0;
     padding: 0;
 }
+
 input,
 select {
     vertical-align: middle;
 }
-
 
 /*-----------------------------------------*/
 
 body {
     background-color: #161617;
     color: #ffd700;
-    font-family: 'Roboto', sans-serif;
-    text-align: center; 
+    font-family: "Roboto", sans-serif;
+    text-align: center;
 }
 
 header {
@@ -178,22 +184,31 @@ button {
 }
 
 .bottom-nav {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    height: 8%;
-    display: flex;
-    justify-content: space-around;
-    background: #161617;
-    padding: 0px;
-    margin: 0px;
-}
-
-.bottom-nav button {
-    background: none;
-    color: #ffd700;
-}
-
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      height: 8%;
+      display: flex;
+      justify-content: space-around;
+      background: #161617;
+      padding: 0px;
+      margin: 0px;
+    }
+    
+    .bottom-nav button {
+      background: none;
+      color: #ffd700;
+      width: 25%; /* Каждая кнопка занимает 25% ширины */
+      flex: 1; /* Равномерно распределяет пространство между кнопками */
+    }
+    
+    .bottom-nav button img {
+        height: 80%; /* Убедитесь, что изображение не выходит за высоту кнопки */
+        width: auto;
+        display: block; /* Убирает лишнее пространство под изображением */
+        margin: 0 auto; /* Центрирует изображение по горизонтали */
+    }
+    
 .top-leaders {
     display: flex;
     justify-content: center;
@@ -253,363 +268,550 @@ button {
     border-radius: 50%;
 }
 
-
-.buttons{
-      width: 50%;
-      padding: 0px;
-      margin: 0px 0px 100px 0px;
+.buttons {
+    width: 50%;
+    padding: 0px;
+    margin: 0px 0px 100px 0px;
 }
 
-
 .header-line2 {
-      position: fixed;
-      top: 91%;
-      width: 100%; /* Занимает всю доступную ширину */
-      margin: 5px 0px 20px 0px; /* Убираем отступ слева */
-      border: none; /* Убираем стандартные границы */
-      height: 1.5px; /* Толщина линии */
-      background-color: #000000; /* Цвет линии */
-      box-shadow: 0px -2px 3px rgba(0, 0, 0, 0.5);
-  }
-
-
+    position: fixed;
+    top: 91%;
+    width: 100%;
+    /* Занимает всю доступную ширину */
+    margin: 5px 0px 20px 0px;
+    /* Убираем отступ слева */
+    border: none;
+    /* Убираем стандартные границы */
+    height: 1.5px;
+    /* Толщина линии */
+    background-color: #000000;
+    /* Цвет линии */
+    box-shadow: 0px -2px 3px rgba(0, 0, 0, 0.5);
+}
 
 /*----index----------------------------------------------------------------------------------*/
 
-.headOfIndex{
-      height: auto;
-      padding: 0;
-      padding-top: 5%;
-      padding-bottom: 5%;
+.headOfIndex {
+    height: auto;
+    padding: 0;
+    padding-top: 5%;
+    padding-bottom: 5%;
 }
 
-.profile{
-      display: flex;
-      align-items: center; /* Выравнивание по вертикали */
-      padding: 0;
+.profile {
+    display: flex;
+    align-items: center;
+    /* Выравнивание по вертикали */
+    padding: 0;
 }
 
-.avatar{
-      width: calc(100% / 3); /* Занимает треть ширины */
-      margin: 0;
-      padding: 0;
-      margin-left: 5%;
+.avatar {
+    width: calc(100% / 3);
+    /* Занимает треть ширины */
+    margin: 0;
+    padding: 0;
+    margin-left: 5%;
 }
 
-.baba{
-      position:relative;
-      width:100%; 
-      height:0; 
-      padding-bottom:100%; 
-      overflow:hidden;
-      border-radius: 50%;
-      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+.baba {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%;
+    overflow: hidden;
+    border-radius: 50%;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 
 .profile img {
-      width: 100%;
-      border-radius: 50%;
-      box-shadow: 0px 0px 3px 40px rgba(0, 0, 0, 0.5);
-      margin: 0;
-      object-fit: cover;
-  }
-
-.info{
-      width: calc(100% * (2/3)); /* Занимает две трети ширины */
-      text-align: left;
-      font-size: 55%;
-      padding: 0;
-      margin: 0;
-      margin-left: 5%;
-      color: whitesmoke;
-      font-weight: 100;
-      line-height: 130%;
+    width: 100%;
+    border-radius: 50%;
+    box-shadow: 0px 0px 3px 40px rgba(0, 0, 0, 0.5);
+    margin: 0;
+    object-fit: cover;
 }
 
-.wallet{
+.info {
+    width: calc(100% * (2 / 3));
+    /* Занимает две трети ширины */
+    text-align: left;
+    font-size: 60%;
+    padding: 0;
+    margin: 0;
+    margin-left: 5%;
+    color: whitesmoke;
+    font-weight: 100;
+    line-height: 130%;
+}
 
-      background-color: #161617;
-      font-size: 100%;
-      padding: 0;
-      margin: 0;
-      color: whitesmoke;
+
+
+
+
+
+.wallet {
+    background-color: #161617;
+    font-size: 100%;
+    padding: 0;
+    margin: 0;
+    color: whitesmoke;
 }
 
 .header-line1 {
-      width: 100%; /* Занимает всю доступную ширину */
-      margin: 0px 0px 20px 0px; /* Убираем отступ слева */
-      border: none; /* Убираем стандартные границы */
-      height: 1.5px; /* Толщина линии */
-      background-color: #000000; /* Цвет линии */
-      box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.5);
-  }
-
-.claimAndBoost{
-      background-color: #161617;
-      margin: 0;
-      padding: 0;
+    width: 100%;
+    /* Занимает всю доступную ширину */
+    margin: 0px 0px 20px 0px;
+    /* Убираем отступ слева */
+    border: none;
+    /* Убираем стандартные границы */
+    height: 1.5px;
+    /* Толщина линии */
+    background-color: #000000;
+    /* Цвет линии */
+    box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.5);
 }
 
-.buttos1{
-      display: flex;
-      gap: 1%;
+.claimAndBoost {
+    background-color: #161617;
+    margin: 0;
+    padding: 0;
 }
 
-.buttonsnn{
-      margin: 5%;
+.buttos1 {
+    display: flex;
+    gap: 1%;
 }
 
-.knopki{
-      width: 100%;
-      margin: 0;
-      padding: 0;
+.buttonsnn {
+    margin: 0 auto;
 }
 
-#knopka{
-      margin-top: 15%;
+.knopki {
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
+#knopka {
+    margin-top: 15%;
+}
 
 /*----weely claim----------------------------------------------------------------------------------*/
 
-.conteiner-day{
-      width: 100%;
-      font-size: 75%;
-      color: whitesmoke;
-      font-family: 'Roboto', sans-serif;
-      font-weight: 300;
+.conteiner-day {
+    width: 100%;
+    font-size: 75%;
+    color: whitesmoke;
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
 }
 
-.dayicon{
-      margin: 0;
-      padding: 0;
-      width: 80%;
+.dayicon {
+    margin: 0;
+    padding: 0;
+    width: 80%;
 }
 
-.dopinfo{
-      font-size: 65%;
-      margin: 0 auto;
-      width: 60%;
-      text-align: center;
-      line-height: 130%;
-      margin-top: 2%;
-      color: #515151;
-      font-weight: 300;
+.dopinfo {
+    font-size: 65%;
+    margin: 0 auto;
+    width: 60%;
+    text-align: center;
+    line-height: 130%;
+    margin-top: 2%;
+    color: #515151;
+    font-weight: 300;
 }
 
-.textinfo{
-      position: relative;
-      bottom: 2em;
-      padding: 1%;
+.textinfo {
+    position: relative;
+    bottom: 2em;
+    padding: 1%;
 }
 
 .section-wrapper {
-      display: flex;
-      justify-content: center; /* Центрируем содержимое */
-      width: 100%; /* Даем wrapper всю ширину */
-      margin: 0 auto;
-  }
-  
-  section {
-      display: flex; /* Используем flexbox для естественного переноса */
-      flex-wrap: wrap; /* Позволяем элементам переноситься вниз */
-      width: 94%; /* Чуть меньше 100%, чтобы создать эффект наложения */
-      margin: 0 auto;
-      padding: 0;
-      text-align: center;
-      margin: 0 auto;
-  }
-  
-  .daylocked {
-      width: calc(100% / 8.05); /* Разбиваем на 8 колонок, но чуть меньше, чтобы было наложение */
-      height: auto; /* Сохраняем пропорции */
-      display: block;
-      margin: -2px; /* Чуть-чуть наезжаем друг на друга */
-  }
-
-
-
-  
-.butback{
-      background-color: #161617;
-      box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.5);
-      color: whitesmoke;
-      border-radius: 20%;
-      font-size: 60%;
-      width: 30%;
-      padding: 1%;
-      position: absolute;
-      top: 90%;
-      left: 48%;
-      transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center; /* Выравниваем по центру */
+    align-items: center; /* Выравниваем по вертикали */
+    width: 100%; /* Растягиваем на всю ширину */
+    margin: 0 auto;
+    text-align: center;
 }
+section {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center; /* Центрируем содержимое */
+        width: 100%;
+        margin: 0 auto;
+
+}
+
+.daylocked {
+    width: calc(100% / 8.05);
+    /* Разбиваем на 8 колонок, но чуть меньше, чтобы было наложение */
+    height: auto;
+    /* Сохраняем пропорции */
+    display: block;
+    margin: -2px;
+    /* Чуть-чуть наезжаем друг на друга */
+}
+
+/*.butback {
+    background-color: #161617;
+    box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.5);
+    color: whitesmoke;
+    border-radius: 20%;
+    font-size: 60%;
+    width: 30%;
+    padding: 1%;
+    position: absolute;
+    top: 90%;
+    left: 48%;
+    transform: translate(-50%, -50%);
+}*/
+
+.koko{
+    width: 100%;
+}
+
+.butbackk {
+    padding: 5px; /* Уменьшаем отступы */
+    background-color: #161617;
+    position: fixed;
+    bottom: 5%; /* Опускаем кнопку ниже */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%; /* Уменьшаем размер */
+    height: 50px;
+    border: none;
+    border-radius: 50%; /* Делаем кнопку круглой */
+}
+
+.butbackk img {
+    width: 100%; /* Подстраиваем картинку под кнопку */
+    height: auto;
+}
+
+
 
 /*----buyboost----------------------------------------------------------------------------------*/
 
-.doppoinfo{
-      font-size: 65%;
-      margin: 0 auto;
-      width: 60%;
-      text-align: center;
-      line-height: 130%;
-      margin-top: 2%;
-      color: #515151;
-      font-weight: 300;
+.doppoinfo {
+    font-size: 65%;
+    margin: 0 auto;
+    width: 60%;
+    text-align: center;
+    line-height: 130%;
+    margin-top: 2%;
+    color: #515151;
+    font-weight: 300;
 }
 
-.textuinfo{
-      position: relative;
-      bottom: -1em;
-      padding: 1%;
+.textuinfo {
+    position: relative;
+    bottom: -1em;
+    padding: 1%;
 }
 
-.manicon{
-      margin: 0;
-      padding: 0;
-      width: 30%;
+.manicon {
+    margin: 0;
+    padding: 0;
+    width: 30%;
 }
 
-.boostbut{
-      background-color: #161617;
-      margin: 0;
-      padding: 0;
-      width: 100%;
+.boostbut {
+    background-color: #161617;
+    margin: 0;
+    padding: 0;
+    width: 100%;
 }
 
-.boosts{
-      margin: 0;
-      padding: 0;
-      width: 100%;
+.boosts {
+    margin: 0;
+    padding: 0;
+    width: 100%;
 }
 
-.huynya{
-      color: #939393;
-      font-size: 10%;
-      width: 80%;
-      text-align: center;
-      margin: 0 auto;
+.huynya {
+    color: #939393;
+    font-size: 10%;
+    width: 80%;
+    text-align: center;
+    margin: 0 auto;
 }
 
 /*----friends----------------------------------------------------------------------------------*/
 
-.friendshead{
-      width: 100%;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      align-items: center;
-      gap: 10%;
+.friendshead {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 10%;
 }
 
-.frava{
-      width: 30%;
+.frava {
+    width: 30%;
 }
 
-.fravaimg{
-      width: 100%;
+.fravaimg {
+    width: 100%;
 }
 
-.textanahuy{
-      width: 70%;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5em; /* Задает расстояние между .zagolovok и .poyasneniye */
+.textanahuy {
+    width: 70%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    /* Задает расстояние между .zagolovok и .poyasneniye */
 }
 
-.zagolovok{
-      width: 100%;
-      margin: 0;
-      padding: 0;
-      font-size: 75%;
-      color: whitesmoke;
-      font-weight: 500;
+.zagolovok {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    color: whitesmoke;
+    font-weight: 500;
 }
 
-.poyasneniye{
-      width: 100%;
-      margin: 0;
-      padding: 0;
-      font-size: 49.5%;
-      color: #585858;
+.poyasneniye {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    color: #585858;
 }
-
 
 .entcode {
+    width: 90%;
+    box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.5);
+    border-radius: 0.5em;
+    padding: 3%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    /* Располагаем элементы вертикально */
+    gap: 1em;
+    /* Добавляем расстояние между текстом и полем ввода */
+    margin-top: 1em;
+}
+
+.entera {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    /* Расстояние между заголовком и пояснением */
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    /* Выравниваем элементы по центру по вертикали */
+    justify-content: space-between;
+    /* Размещаем инпут слева, кнопку справа */
+    width: 100%;
+    /* Растягиваем контейнер на всю ширину */
+}
+
+.vvodilka,
+.done {
+    height: 2em;
+    /* Делаем одинаковую высоту */
+}
+
+.vvodilka {
+    background-color: #161617;
+    width: 35%;
+    border-radius: 0.8em;
+    border: none;
+    outline: none;
+    box-shadow: 0px 0px 3px 2px rgba(0, 0, 0, 0.5);
+    color: whitesmoke;
+    padding-left: 10px;
+}
+
+.vvodilka::placeholder {
+    color: #555;
+    opacity: 1;
+}
+
+.vvodilka:focus::placeholder {
+    opacity: 0;
+}
+
+.vvodilka:focus {
+    outline: none;
+    border: none;
+    box-shadow: 0px 0px 3px 2px rgba(0, 0, 0, 0.5);
+    caret-color: whitesmoke;
+}
+
+.done {
+    background-color: #161617;
+    width: 20%;
+    box-shadow: 0px 0px 3px 2px rgba(0, 0, 0, 0.5);
+    color: whitesmoke;
+    border-radius: 0.8em;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1em;
+    font-weight: 300;
+}
+
+#chvet {
+    line-height: 1.2em;
+}
+
+.polhuy{
+      color: #515151;
+      width: 70%;
+      line-height: 1.2em;
+      margin: 0 auto;
+      margin: 3em;
+}
+
+.refer{
       width: 90%;
       box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.5);
       border-radius: 0.5em;
       padding: 3%;
       margin: 0 auto;
       display: flex;
-      flex-direction: column; /* Располагаем элементы вертикально */
-      gap: 1em; /* Добавляем расстояние между текстом и полем ввода */
-  }
-  
-  .entera {
-      display: flex;
       flex-direction: column;
-      gap: 0.5em; /* Расстояние между заголовком и пояснением */
-  }
-  
-  .input-container {
-      display: flex;
-      align-items: center; /* Выравниваем элементы по центру по вертикали */
-      justify-content: space-between; /* Размещаем инпут слева, кнопку справа */
-      width: 100%; /* Растягиваем контейнер на всю ширину */
-  }
-  
-  .vvodilka, .done {
-      height: 2em; /* Делаем одинаковую высоту */
-  }
-  
-  .vvodilka {
-      background-color: #161617;
-      width: 35%;
-      border-radius: 0.8em;
-      border: none;
-      outline: none;
-      box-shadow: 0px 0px 3px 2px rgba(0, 0, 0, 0.5);
-      color: whitesmoke;
-      padding-left: 10px;
-      font-size: 40%;
-  }
-  
-  .vvodilka::placeholder {
-      color: #555;
-      opacity: 1;
-  }
-  
-  .vvodilka:focus::placeholder {
-      opacity: 0;
-  }
-  
-  .vvodilka:focus {
-      outline: none;
-      border: none;
-      box-shadow: 0px 0px 3px 2px rgba(0, 0, 0, 0.5);
-      caret-color: whitesmoke;
-  }
-  
-  .done {
-      background-color: #161617;
-      width: 20%;
-      font-size: 40%;
-      box-shadow: 0px 0px 3px 2px rgba(0, 0, 0, 0.5);
-      color: whitesmoke;
-      border-radius: 0.8em;
-      border: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0 1em;
-      font-weight: 300;
-  }
+      /* Располагаем элементы вертикально */
+      gap: 1em;
+      /* Добавляем расстояние между текстом и полем ввода */
+      
+}
 
-  #chvet{
-      line-height: 1.2em;
-  }
+#fuck{
+      margin: 0 auto;
+      width: 30%;
+}
 
 
-  
+@media (max-width: 1000px) {
+    .vvodilka,
+    .done {
+        font-size: 140% !important;
+    }
+    .zagolovok {
+        font-size: 200% !important;
+    }
+    .poyasneniye,
+    .polhuy {
+        font-size: 150% !important;
+    }
+
+    .info {
+        font-size: 140%;
+    }
+}
+
+@media (max-width: 900px) {
+    .vvodilka,
+    .done {
+        font-size: 85% ;
+    }
+    .zagolovok {
+        font-size: 115% ;
+    }
+    .poyasneniye,
+    .polhuy {
+        font-size: 95% ;
+    }
+}
+
+@media (max-width: 800px) {
+    .vvodilka,
+    .done {
+        font-size: 110% !important ;
+    }
+    .zagolovok {
+        font-size: 150% !important;
+    }
+    .poyasneniye,
+    .polhuy {
+        font-size: 90% ;
+    }
+    .info {
+        font-size: 100%;
+    }
+}
+
+@media (max-width: 700px) {
+    .vvodilka,
+    .done {
+        font-size: 75% ;
+    }
+    .zagolovok {
+        font-size: 90%;
+    }
+    .poyasneniye,
+    .polhuy {
+        font-size: 115% !important;
+    }
+
+    .bottom-nav {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        height: 8%;
+        display: flex;
+        justify-content: space-around;
+        background: #161617;
+        padding: 0px;
+        margin: 0px;
+      }
+      
+      .bottom-nav button {
+        background: none;
+        color: #ffd700;
+        width: 25%;
+        flex: 1; 
+      }
+      
+      .bottom-nav button img {
+          height: 90%; 
+          width: auto;
+          display: block; 
+          margin: 0 auto; 
+      }
+}
+
+@media (max-width: 600px) {
+    .vvodilka,
+    .done {
+        font-size: 70% ;
+    }
+    .zagolovok {
+        font-size: 95% ;
+    }
+    .poyasneniye,
+    .polhuy {
+        font-size: 75% ;
+    }
+    .info {
+        font-size: 60%;
+    }
+}
+
+@media (max-width: 500px) {
+    .vvodilka,
+    .done {
+        font-size: 60% ;
+    }
+    .zagolovok {
+        font-size: 90% ;
+    }
+    .poyasneniye,
+    .polhuy {
+        font-size: 75% ;
+    }
+}
+

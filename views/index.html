@@ -14,20 +14,35 @@
 <body>
       <header class="headOfIndex">
             <div class="profile">
-                  <div class="avatar">
-                        <div class="baba">
-                              <img src="/icons/5.png" alt="Аватар">
-                        </div>
-                  </div>
-                  <div class="info">
-                        <h2 id="username">User</h2>
-                        <br>
-                        <p>Rating:<span id="rating"> 0</span></p>
-                        <p>Cabala: CryptoFarm</p>
-                        <p>Wallet: <button onclick="connectWallet()" class="wallet">Connect</button></p>
-                  </div>
+                <!-- 📌 Аватарка (изменение по клику) -->
+                <div class="avatar">
+                    <div class="baba">
+                        <img id="avatarImg" src="/icons/5.png" alt="Аватар" onclick="showAvatarUpload()">
+                    </div>
+                    <div id="avatarUploadSection" style="display: none;">
+                        <input type="file" id="avatarInput" accept="image/*">
+                        <button onclick="uploadAvatar()">OK</button>
+                    </div>
+                </div>
+        
+                <!-- 📌 Информация о пользователе -->
+                <div class="info">
+                    <h2 id="username" onclick="showUsernameInput()">User</h2>
+                    <div id="usernameEditSection" style="display: none;">
+                        <input type="text" id="usernameInput" placeholder="Enter new username">
+                        <button onclick="updateUsername()">OK</button>
+                    </div>
+        
+                    <p>Rating: <span id="rating">0</span></p>
+                    <p>Cabala: CryptoFarm</p>
+        
+                    <p>Wallet: 
+                        <span id="walletStatus">Not connected</span> 
+                        <button onclick="connectWallet()" class="wallet">Connect</button>
+                    </p>
+                </div>
             </div>
-      </header>
+        </header>
 
       <hr class="header-line1">
 
@@ -43,11 +58,19 @@
       <hr class="header-line2">
 
       <nav class="bottom-nav">
-            <button onclick="navigate('/')"> <img src="/icons/1.png" alt="" class="buttons"> </button>
-            <button onclick="navigate('/rating')"><img src="/icons/4.png" alt="" class="buttons"></button>
-            <button onclick="navigate('/mining')"><img src="/icons/2.png" alt="" class="buttons"></button>
-            <button onclick="navigate('/friends')"><img src="/icons/3.png" alt="" class="buttons"></button>
-      </nav>
+            <button data-page="profile" data-active="6.png" data-inactive="1.png" onclick="navigate('/')"> 
+                <img src="/icons/1.png" alt="Профиль" class="buttons"> 
+            </button>
+            <button data-page="rating" data-active="7.png" data-inactive="2.png" onclick="navigate('/rating')">
+                <img src="/icons/2.png" alt="Рейтинг" class="buttons">
+            </button>
+            <button data-page="mining" data-active="8.png" data-inactive="3.png" onclick="navigate('/mining')">
+                <img src="/icons/3.png" alt="Майнинг" class="buttons">
+            </button>
+            <button data-page="friends" data-active="9.png" data-inactive="4.png" onclick="navigate('/friends')">
+                <img src="/icons/4.png" alt="Друзья" class="buttons">
+            </button>
+        </nav>
 
       <script src="/script.js"></script>
 </body>
