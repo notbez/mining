@@ -803,14 +803,14 @@ section {
 @media (max-width: 500px) {
     .vvodilka,
     .done {
-        font-size: 60% ;
+        font-size: 60% !important;
     }
     .zagolovok {
-        font-size: 90% ;
+        font-size: 90% !important;
     }
     .poyasneniye,
     .polhuy {
-        font-size: 75% ;
+        font-size: 75% !important;
     }
 }
 
@@ -842,14 +842,26 @@ section {
 }
 
 .pereklraiting{
-    background-color: #161617;
+    background-color: #161716;
     margin-bottom: 0.5em;
     padding-bottom: 0;
+    width: 10px;
+    flex-grow: 1;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.pereklraiting img{
+    width: 100%;
 }
 
 .headOfRating{
     margin: 0;
     padding: 0;
+}
+
+.chelkatbkater{
+    display: flex;
 }
 
 
