@@ -109,6 +109,7 @@ async function updateUserInfo() {
 
         // 🛠 Фикс загрузки аватарки после обновления страницы
         if (user.avatar) {
+            console.log("🔄 Загружаем аватарку:", user.avatar); // Логируем путь
             document.getElementById('avatarImg').src = user.avatar;
         } else {
             document.getElementById('avatarImg').src = "/icons/default-avatar.png";
@@ -116,7 +117,7 @@ async function updateUserInfo() {
 
         document.getElementById('walletInput').value = user.wallet || "";
     } catch (error) {
-        console.error('Ошибка загрузки данных пользователя:', error);
+        console.error('❌ Ошибка загрузки данных пользователя:', error);
     }
 }
 
@@ -185,6 +186,7 @@ async function uploadAvatar() {
         const data = await response.json();
         if (data.success) {
             document.getElementById('avatarImg').src = data.avatar;
+            console.log("✅ Загружена новая аватарка:", data.avatar);
             alert("✅ Avatar uploaded!");
         } else {
             alert("❌ Ошибка загрузки аватарки.");

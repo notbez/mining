@@ -1,3 +1,4 @@
+// routes/user.js
 const express = require('express');
 const router = express.Router();
 const multer = require('multer');
@@ -78,7 +79,7 @@ router.post('/upload-avatar/:telegramId', upload.single('avatar'), async (req, r
             { new: true }
         );
 
-        res.json({ success: true, avatar: user.avatar });
+        res.json({ success: true, avatar: avatarPath });
     } catch (error) {
         console.error('Ошибка загрузки аватарки:', error);
         res.status(500).json({ error: 'Ошибка сервера' });

@@ -1,55 +1,83 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Майнинг</title>
-      <link rel="stylesheet" href="/styles.css">
-       <link rel="preconnect" href="https://fonts.googleapis.com">
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Майнинг</title>
+        <link rel="stylesheet" href="/styles.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+            rel="stylesheet"
+        />
 
-      <script src="https://telegram.org/js/telegram-web-app.js"></script>
-</head>
-<body>
-      <header class="headOfIndex">
-            <div class="profile">
-                  <div class="avatar">
-                        <div class="baba">
-                              <img src="/icons/5.png" alt="Аватар">
-                        </div>
-                  </div>
-                  <div class="info">
-                        <h2 id="username">User</h2>
-                        <br>
-                        <p>Rating:<span id="rating"> 0</span></p>
-                        <p>Cabala: CryptoFarm</p>
-                        <p>Wallet: <button onclick="connectWallet()" class="wallet">Connect</button></p>
-                  </div>
+        <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    </head>
+    <body>
+        <header class="headOfMining">
+            <div class="balik">
+                <div class="chethik">10.010.010</div>
+                <div class="poyasneniye">
+                    When the boost is activated and active the balance will be
+                    highlighted in yellow.
+                </div>
             </div>
-      </header>
+        </header>
 
-      <hr class="header-line1">
+        <section class="zavodsec">
 
+            <div class="miandta">
+                    <button class="miningk">
+                        <img src="/icons/mininginac.png" alt="">
+                    </button>
 
+                    <button class="tasks">
+                        <img src="/icons/taskinac.png" alt="">
+                    </button>
+            </div>
+                    <button class="zavod">
+                        <img src="/icons/zavod.png" alt="" class="zavodimg">
+                    </button>
+        </section>
 
-      <hr class="header-line2">
+        <hr class="header-line2" />
 
-      <nav class="bottom-nav">
-            <button data-page="profile" data-active="6.png" data-inactive="1.png" onclick="navigate('/')"> 
-                <img src="/icons/1.png" alt="Профиль" class="buttons"> 
+        <nav class="bottom-nav">
+            <button
+                data-page="profile"
+                data-active="6.png"
+                data-inactive="1.png"
+                onclick="navigate('/')"
+            >
+                <img src="/icons/1.png" alt="Профиль" class="buttons" />
             </button>
-            <button data-page="rating" data-active="7.png" data-inactive="2.png" onclick="navigate('/rating')">
-                <img src="/icons/2.png" alt="Рейтинг" class="buttons">
+            <button
+                data-page="rating"
+                data-active="7.png"
+                data-inactive="2.png"
+                onclick="navigate('/rating')"
+            >
+                <img src="/icons/2.png" alt="Рейтинг" class="buttons" />
             </button>
-            <button data-page="mining" data-active="8.png" data-inactive="3.png" onclick="navigate('/mining')">
-                <img src="/icons/3.png" alt="Майнинг" class="buttons">
+            <button
+                data-page="mining"
+                data-active="8.png"
+                data-inactive="3.png"
+                onclick="navigate('/mining')"
+            >
+                <img src="/icons/3.png" alt="Майнинг" class="buttons" />
             </button>
-            <button data-page="friends" data-active="9.png" data-inactive="4.png" onclick="navigate('/friends')">
-                <img src="/icons/4.png" alt="Друзья" class="buttons">
+            <button
+                data-page="friends"
+                data-active="9.png"
+                data-inactive="4.png"
+                onclick="navigate('/friends')"
+            >
+                <img src="/icons/4.png" alt="Друзья" class="buttons" />
             </button>
         </nav>
 
-      <script src="/script.js"></script>
-</body>
+        <script src="/script.js"></script>
+    </body>
 </html>
