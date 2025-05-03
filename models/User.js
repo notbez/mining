@@ -1,16 +1,16 @@
-const mongoose = require('mongoose');
+// 📂 models/User.js
+const mongoose = require("mongoose");
 
-const UserSchema = new mongoose.Schema({
-    telegramId: { type: String, required: true, unique: true },
+const userSchema = new mongoose.Schema({
+    _id: String,
     username: { type: String, default: "User" },
-    rating: { type: Number, default: 0 },
-    wallet: { type: String, default: null }, // Адрес кошелька
-    avatar: { type: String, default: "/icons/default-avatar.png" }, // Ссылка на аву
+    avatar: { type: String, default: "https://res.cloudinary.com/demo/image/upload/default-avatar.png" },
     stars: { type: Number, default: 0 },
-    dailyStreak: { type: Number, default: 0 },
-    lastDailyClaim: { type: Date, default: null },
-    weeklyStreak: { type: Number, default: 0 },
-    lastWeeklyClaim: { type: Date, default: null }
+    lastLogin: { type: Date, default: null },
+    streak: { type: Number, default: 0 },
+    weeklyProgress: { type: Number, default: 0 },
+    wallet: { type: String, default: "" }
+    // ⚠️ rating пока не сохраняем в базе — считаем на лету
 });
 
-module.exports = mongoose.model('User', UserSchema);
+module.exports = mongoose.model("User", userSchema);
