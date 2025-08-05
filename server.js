@@ -19,27 +19,31 @@ app.use(cors());
 app.use(express.static('public'));
 console.log("✅ Middleware загружены");
 
-const uri = 'mongodb+srv://Mishkan:pibpec-ziwfo4-kEcxer@mining.8cel2.mongodb.net/?retryWrites=true&w=majority&appName=Mining';
+const uri = process.env.MONGO_URI;
 
 console.log("🔌 Подключаемся к MongoDB...");
-mongoose.connect(uri)
+mongoose.connect(uri, { serverSelectionTimeoutMS: 10000 })
   .then(() => console.log('✅ Успешное подключение к MongoDB'))
   .catch(err => {
     console.error('❌ Ошибка подключения к MongoDB:', err);
-    process.exit(1); // Если ошибка, сразу завершаем процесс
+    process.exit(1);
   });
 
 app.use((req, res, next) => {
-    console.log(`➡ Запрос: ${req.method} ${req.url}`);
-    next();
+  console.log(`➡ Запрос: ${req.method} ${req.url}`);
+  next();
 });
 
 console.log("📌 Подключаем API...");
 try {
   app.use('/user', require('./routes/user'));
-  console.log("✅ /user загружен (временный)");
+  app.use('/claim', require('./routes/claim'));
+  app.use('/boost', require('./routes/boost'));
+  app.use('/mining', require('./routes/mining'));
+  console.log("✅ API подключены успешно");
 } catch (error) {
   console.error("❌ Ошибка при подключении API:", error);
+  process.exit(1);
 }
 
 console.log("📌 Раздаём HTML-страницы...");
@@ -59,8 +63,4 @@ try {
 }
 
 console.log("✅ Всё нормально, запускаем Express...");
-app.use((err, req, res, next) => {
-  console.error('🔥 Global error handler:', err);
-  res.status(500).json({ error: 'Внутренняя ошибка сервера', message: err.message });
-});
 app.listen(PORT, () => console.log(`🚀 Server running on http://localhost:${PORT}`));

@@ -1,17 +1,82 @@
-// script.js
+// public/script.js
 
 const tg = window.Telegram.WebApp;
 tg.expand();
 
 const userId = tg.initDataUnsafe?.user?.id || "123456";
 
+// === MINING ===
+let miningStart = localStorage.getItem('miningStart');
+let miningTimer;
+
+function startMiningSession() {
+    const now = Date.now();
+    localStorage.setItem('miningStart', now);
+    miningStart = now;
+    document.querySelector('.zavod img').src = "/img/mining.gif";
+    updateMiningUI();
+    startMiningInterval();
+}
+
+function stopMiningSession() {
+    localStorage.removeItem('miningStart');
+    clearInterval(miningTimer);
+    miningTimer = null;
+    document.querySelector('.zavod img').src = "/img/static-mining.png";
+}
+
+function startMiningInterval() {
+    miningTimer = setInterval(async () => {
+        const now = Date.now();
+        const elapsed = now - parseInt(miningStart);
+
+        if (elapsed >= 60 * 60 * 1000) {
+            stopMiningSession();
+        } else {
+            try {
+                await fetch('/mining/mine', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ telegramId: userId })
+                });
+                console.log("⛏ Монеты начислены!");
+                updateUserInfo();
+            } catch (e) {
+                console.error("❌ Ошибка майнинга:", e);
+            }
+        }
+    }, 60 * 1000);
+}
+
+function updateMiningUI() {
+    if (!miningStart) return;
+    const elapsed = Date.now() - parseInt(miningStart);
+    if (elapsed < 60 * 60 * 1000) {
+        document.querySelector('.zavod img').src = "/img/mining.gif";
+        startMiningInterval();
+    } else {
+        stopMiningSession();
+    }
+}
+
+// === DOM ===
 document.addEventListener('DOMContentLoaded', async () => {
     await checkDailyLogin();
     await updateUserInfo();
     updateActiveTab();
 
     if (window.location.pathname === '/rating') {
-        await loadTopUsers();
+        initRatingTabs();
+        await loadTopUsers('overall');
+    }
+
+    if (window.location.pathname === '/mining') {
+        updateMiningUI();
+        document.querySelector('.zavod')?.addEventListener('click', () => {
+            if (!miningStart) {
+                startMiningSession();
+            }
+        });
     }
 });
 
@@ -182,43 +247,55 @@ async function uploadAvatar() {
     formData.append('avatar', fileInput.files[0]);
 
     try {
-        console.log("📤 Отправляем файл на сервер...");
-
         const response = await fetch(`/user/upload-avatar/${userId}`, {
             method: 'POST',
             body: formData
         });
 
         const text = await response.text();
-        console.log("📥 Ответ от сервера (сырой):", text);
-
         if (text.startsWith('<')) {
-            console.error("❌ Сервер вернул HTML вместо JSON! Ошибка на сервере!");
             alert("❌ Ошибка сервера. Проверьте логи.");
             return;
         }
 
         const data = JSON.parse(text);
-        console.log("📸 Сервер вернул JSON:", data);
-
         if (data.success) {
             document.getElementById('avatarImg').src = data.avatar + "?t=" + new Date().getTime();
-            console.log("URL от сервера:", data.avatar);
             alert("✅ Аватарка обновлена!");
         } else {
-            console.error("❌ Ошибка сервера:", data);
             alert("❌ Ошибка загрузки аватарки: " + data.error);
         }
     } catch (error) {
-        console.error("❌ Ошибка обработки ответа сервера:", error);
         alert("❌ Ошибка при загрузке изображения.");
     }
 }
 
-// 🚀 Загрузка топ-юзеров
-async function loadTopUsers() {
+// === RATING ===
+
+function initRatingTabs() {
+    const ratingButtons = document.querySelectorAll(".pereklraiting");
+    const iconSets = [
+        { active: "overallact.png", inactive: "overallinac.png" },
+        { active: "cabalact.png", inactive: "cabalinac.png" },
+        { active: "leugeact.png", inactive: "leugeinac.png" }
+    ];
+    const types = ["overall", "cabal", "league"];
+
+    ratingButtons.forEach((btn, index) => {
+        btn.addEventListener("click", () => {
+            ratingButtons.forEach((b, i) => {
+                const img = b.querySelector("img");
+                img.src = `/icons/${i === index ? iconSets[i].active : iconSets[i].inactive}`;
+            });
+
+            loadTopUsers(types[index]);
+        });
+    });
+}
+
+async function loadTopUsers(type = "overall") {
     try {
-        const response = await fetch('/rating/top-users');
+        const response = await fetch(`/api/rating?type=${type}`);
         const data = await response.json();
 
         const container = document.getElementById('topUsersList');
@@ -227,19 +304,19 @@ async function loadTopUsers() {
             return;
         }
 
-        container.innerHTML = ''; // Очищаем старый список
+        container.innerHTML = '';
 
-        data.forEach(user => {
+        data.rating.slice(0, 20).forEach(user => {
             const item = document.createElement('div');
             item.className = 'top-user-item';
             item.innerHTML = `
-                <span>${user.rank}. ${user.username}</span> — <span>${user.rating} pts</span>
+                <span>${user.position}. ${user.username}</span> — <span>${user.coins} 💰</span>
             `;
             container.appendChild(item);
         });
 
-        console.log("✅ Топ-юзеры загружены!");
+        console.log("✅ Рейтинг загружен:", type);
     } catch (error) {
-        console.error("❌ Ошибка загрузки топ-юзеров:", error);
+        console.error("❌ Ошибка загрузки рейтинга:", error);
     }
 }

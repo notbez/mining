@@ -1,54 +1,64 @@
+<!-- rating.html (ОБНОВЛЕННЫЙ) -->
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Рейтинг</title>
-      <link rel="stylesheet" href="/styles.css">
-      <link rel="preconnect" href="https://fonts.googleapis.com">
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-
-      <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Рейтинг</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
-      <header class="headOfRating">
-            <div class="ramka">
-                  <img src="/icons/ramki.png" alt="" class="ramki">
-            </div>
-            <div class="chelkatbkater">
-                  <button class="pereklraiting">
-                        <img src="/icons/overallinac.png" alt="">
-                  </button>
-                  <button class="pereklraiting">
-                        <img src="/icons/cabalinac.png" alt="">
-                  </button>
-                  <button class="pereklraiting">
-                        <img src="/icons/leugeinac.png" alt="">
-                  </button>
-            </div>
-      </header>
-
-      <hr class="header-line1">
-
-      <ul id="ratingList"></ul>
-
-      <hr class="header-line2">
-      <nav class="bottom-nav">
-            <button data-page="profile" data-active="6.png" data-inactive="1.png" onclick="navigate('/')"> 
-                <img src="/icons/1.png" alt="Профиль" class="buttons"> 
+    <header class="headOfRating">
+        <div class="ramka">
+            <img src="/icons/ramki.png" alt="" class="ramki">
+        </div>
+        <div class="chelkatbkater">
+            <button class="pereklraiting" onclick="loadTopUsers('overall')">
+                <img src="/icons/overallinac.png" alt="Общий">
             </button>
-            <button data-page="rating" data-active="7.png" data-inactive="2.png" onclick="navigate('/rating')">
-                <img src="/icons/2.png" alt="Рейтинг" class="buttons">
+            <button class="pereklraiting" onclick="loadTopUsers('cabal')">
+                <img src="/icons/cabalinac.png" alt="Кабала">
             </button>
-            <button data-page="mining" data-active="8.png" data-inactive="3.png" onclick="navigate('/mining')">
-                <img src="/icons/3.png" alt="Майнинг" class="buttons">
+            <button class="pereklraiting" onclick="loadTopUsers('league')">
+                <img src="/icons/leugeinac.png" alt="Лига">
             </button>
-            <button data-page="friends" data-active="9.png" data-inactive="4.png" onclick="navigate('/friends')">
-                <img src="/icons/4.png" alt="Друзья" class="buttons">
-            </button>
-        </nav>
+        </div>
+    </header>
 
-      <script src="/script.js"></script>
+    <hr class="header-line1">
+
+    <div id="topUsersList" class="rating-container"></div>
+    <div class="test-section">
+      <h3>🔹 Тестовые Кабалы:</h3>
+      <div id="fakeCabals"></div>
+  
+      <h3>🔹 Тестовые Лиги:</h3>
+      <div id="fakeLeagues"></div>
+  
+      <h3>🔹 Тестовые Пользователи:</h3>
+      <div id="fakeUsers"></div>
+  </div>
+
+    <hr class="header-line2">
+    <nav class="bottom-nav">
+        <button data-page="profile" data-active="6.png" data-inactive="1.png" onclick="navigate('/')">
+            <img src="/icons/1.png" alt="Профиль" class="buttons">
+        </button>
+        <button data-page="rating" data-active="7.png" data-inactive="2.png" onclick="navigate('/rating')">
+            <img src="/icons/2.png" alt="Рейтинг" class="buttons">
+        </button>
+        <button data-page="mining" data-active="8.png" data-inactive="3.png" onclick="navigate('/mining')">
+            <img src="/icons/3.png" alt="Майнинг" class="buttons">
+        </button>
+        <button data-page="friends" data-active="9.png" data-inactive="4.png" onclick="navigate('/friends')">
+            <img src="/icons/4.png" alt="Друзья" class="buttons">
+        </button>
+    </nav>
+
+    <script src="/script.js"></script>
 </body>
 </html>
