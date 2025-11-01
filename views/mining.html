@@ -17,7 +17,7 @@
     <body>
         <header class="headOfMining">
             <div class="balik">
-<div class="chethik" id="chethik">0</div>
+                <div class="chethik" id="chethik">0</div>
                 <div class="poyasneniye">
                     When the boost is activated and active the balance will be
                     highlighted in yellow.
@@ -79,5 +79,35 @@
         </nav>
 
         <script src="/script.js"></script>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", async () => {
+              const balanceDiv = document.getElementById("chethik");
+              const telegramId = localStorage.getItem("telegramId");
+            
+              if (!telegramId) {
+                console.warn("Нет telegramId в localStorage");
+                balanceDiv.textContent = "0";
+                return;
+              }
+            
+              async function updateBalance() {
+                try {
+                  const res = await fetch(`/mining/coins/${telegramId}`);
+                  const data = await res.json();
+                  balanceDiv.textContent = data.coins ?? 0;
+                } catch (err) {
+                  console.error("Ошибка при получении баланса:", err);
+                  balanceDiv.textContent = "⚠️";
+                }
+              }
+            
+              // Обновляем баланс сразу при загрузке
+              await updateBalance();
+            
+              // Автообновление баланса каждые 30 секунд
+              setInterval(updateBalance, 30000);
+            });
+            </script>
     </body>
 </html>

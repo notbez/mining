@@ -1,80 +1,129 @@
 // routes/mining.js
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const User = require('../models/User');
+const User = require("../models/User");
 
-const COINS_PER_MIN = 10;
-const MINING_DURATION_MIN = 60;
+const COINS_PER_MIN = 100;
+const MINING_DURATION_MIN = 1; // duration of one mining session in minutes
 
-router.post('/start/:telegramId', async (req, res) => {
+// Start mining
+router.post("/start/:telegramId", async (req, res) => {
   try {
-    const user = await User.findById(req.params.telegramId);
-    if (!user) return res.status(404).json({ error: 'User not found' });
+    const { telegramId } = req.params;
+    const user = await User.findOne({ telegramId });
+    if (!user) return res.status(404).json({ error: "User not found" });
 
-    const now = new Date();
-
-    // Проверка: уже идёт майнинг?
     if (user.miningSession?.isActive) {
-      return res.status(400).json({ error: 'Mining already in progress' });
+      return res.status(400).json({ error: "Mining already in progress" });
     }
 
-    // Запуск новой сессии
+    const now = new Date();
     user.miningSession = {
       startedAt: now,
       minedMinutes: 0,
-      isActive: true
+      isActive: true,
     };
 
     await user.save();
-    res.json({ success: true, startedAt: now });
+    console.log(`Mining started for ${telegramId}`);
+
+    // Automatically finish mining after duration
+    setTimeout(async () => {
+      const updatedUser = await User.findOne({ telegramId });
+      if (updatedUser && updatedUser.miningSession?.isActive) {
+        updatedUser.hm += COINS_PER_MIN * MINING_DURATION_MIN;
+        updatedUser.miningSession.isActive = false;
+        updatedUser.miningSession.minedMinutes = MINING_DURATION_MIN;
+        await updatedUser.save();
+        console.log(`Mining completed for ${telegramId} (+${COINS_PER_MIN})`);
+      }
+    }, MINING_DURATION_MIN * 60 * 1000);
+
+    res.json({
+      success: true,
+      startedAt: now,
+      message: "Mining started successfully",
+    });
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: 'Server error' });
+    console.error("Error starting mining:", err);
+    res.status(500).json({ error: "Server error" });
   }
 });
 
-router.get('/status/:telegramId', async (req, res) => {
+// Get mining status
+router.get("/status/:telegramId", async (req, res) => {
   try {
-    const user = await User.findById(req.params.telegramId);
-    if (!user || !user.miningSession?.isActive) {
-      return res.json({ active: false });
+    const { telegramId } = req.params;
+    const user = await User.findOne({ telegramId });
+    if (!user) return res.status(404).json({ error: "User not found" });
+
+    if (!user.miningSession?.isActive) {
+      return res.json({ active: false, totalCoins: user.hm || 0 });
     }
 
     const now = new Date();
-    const { startedAt, minedMinutes } = user.miningSession;
+    const { startedAt } = user.miningSession;
+    const elapsedMs = now - new Date(startedAt);
+    const elapsedMinutes = Math.floor(elapsedMs / 60000);
+    const minutesLeft = Math.max(0, MINING_DURATION_MIN - elapsedMinutes);
 
-    const totalElapsed = Math.floor((now - new Date(startedAt)) / 60000);
-    const newMinutes = totalElapsed - minedMinutes;
-
-    // Уже прошло больше часа?
-    if (totalElapsed >= MINING_DURATION_MIN) {
-      const remainingReward = (MINING_DURATION_MIN - minedMinutes) * COINS_PER_MIN;
-      if (remainingReward > 0) user.hm += remainingReward;
-
-      user.miningSession.isActive = false;
-      await user.save();
-
-      return res.json({ active: false, totalHM: user.hm });
-    }
-
-    // Начисляем награду за новые минуты
-    if (newMinutes > 0) {
-      const reward = newMinutes * COINS_PER_MIN;
-      user.hm += reward;
-      user.miningSession.minedMinutes = minedMinutes + newMinutes;
-      await user.save();
-    }
-
-    return res.json({
+    res.json({
       active: true,
-      totalHM: user.hm,
-      minedMinutes: user.miningSession.minedMinutes,
-      minutesLeft: MINING_DURATION_MIN - totalElapsed
+      minedMinutes: elapsedMinutes,
+      minutesLeft,
+      totalCoins: user.hm,
     });
-
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: 'Server error' });
+    console.error("Error fetching mining status:", err);
+    res.status(500).json({ error: "Server error" });
+  }
+});
+
+// Get user coins
+router.get("/coins/:telegramId", async (req, res) => {
+  try {
+    const { telegramId } = req.params;
+    const user = await User.findOne({ telegramId });
+    if (!user) return res.status(404).json({ error: "User not found" });
+
+    res.json({ coins: user.hm || 0 });
+  } catch (err) {
+    console.error("Error fetching coins:", err);
+    res.status(500).json({ error: "Server error" });
+  }
+});
+
+// Stop mining manually
+router.post("/stop/:telegramId", async (req, res) => {
+  try {
+    const { telegramId } = req.params;
+    const user = await User.findOne({ telegramId });
+    if (!user) return res.status(404).json({ error: "User not found" });
+    if (!user.miningSession?.isActive) {
+      return res.status(400).json({ error: "No active mining session" });
+    }
+
+    const now = new Date();
+    const elapsedMinutes = Math.floor(
+      (now - new Date(user.miningSession.startedAt)) / 60000
+    );
+    const reward = Math.min(elapsedMinutes, MINING_DURATION_MIN) * COINS_PER_MIN;
+
+    user.hm += reward;
+    user.miningSession.isActive = false;
+    user.miningSession.minedMinutes = elapsedMinutes;
+    await user.save();
+
+    console.log(`Mining stopped manually for ${telegramId} (+${reward} HM)`);
+
+    res.json({
+      success: true,
+      totalCoins: user.hm,
+      message: "Mining stopped manually",
+    });
+  } catch (err) {
+    console.error("Error stopping mining:", err);
+    res.status(500).json({ error: "Server error" });
   }
 });
 
